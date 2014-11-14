@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+<!-- 	<Resource name="jdbc/bookstoreDS" url="jdbc:h2:mem:jee.basics;;INIT=RUNSCRIPT FROM 'src/h2/init.sql';DB_CLOSE_DELAY=-1" 
+		driverClassName="org.h2.jdbcx.JdbcDataSource" username="sa" password="sa" 
+		auth="Container" type="javax.sql.DataSource" maxActive="3" maxIdle="2" maxWait="10000" 
+		/>  -->
+ 	<Resource name="jdbc/bookstoreDS"
+		url="jdbc:h2:file:./bookstoreDB;DB_CLOSE_DELAY=-1"
+		driverClassName="org.h2.jdbcx.JdbcDataSource" username="sa" password="sa"
+		auth="Container" type="javax.sql.DataSource" maxActive="3" maxIdle="2"
+		maxWait="10000" /> 
+	<!-- <Resource name="jdbc/bookstoreDS"
+		url="jdbc:h2:file:./bookstoreDB;INIT=RUNSCRIPT FROM 'src/h2/init.sql'"
+		driverClassName="org.h2.jdbcx.JdbcDataSource" username="sa" password="sa"
+		auth="Container" type="javax.sql.DataSource" maxActive="3" maxIdle="2"
+		maxWait="10000" /> -->
+</Context>
