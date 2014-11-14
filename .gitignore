@@ -41,3 +41,11 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+#Env infos
+.settings
+.idea
+.classpath
+target
+*.iml
