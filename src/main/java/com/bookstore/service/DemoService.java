@@ -9,13 +9,24 @@ import com.bookstore.web.util.EMFListener;
 
 public class DemoService {
 
-	//private EntityManager em = ;
-	
+    private EntityManager em = EMFListener.createEntityManager();
 	public List<Book> findAll() {
-		EntityManager em = EMFListener.createEntityManager();
-		List<Book> books = em.createQuery("From Book", Book.class).getResultList();
+		List<Book> books = this.em.createQuery("From Book", Book.class).getResultList();
 		em.close();
 		return books;
 	}
+
+    public List<Book> findByLabelAndCriterion(String label, String criterion) throws Exception{
+        try {
+            List<Book> books = this.em.createQuery("select b From Book b where b." + criterion + "= :label", Book.class)
+                    .setParameter("label", label)
+                    .getResultList();
+            em.close();
+            return books;
+        } catch (Exception e) {
+            throw new Exception("DemoService:findByLabelAndCriterion: " + e.getMessage());
+        }
+
+    }
 
 }

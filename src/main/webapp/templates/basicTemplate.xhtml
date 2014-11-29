@@ -21,6 +21,7 @@
 			<h:outputText value="Default Title" />
 		</ui:insert>
 		<h:link outcome="/pages/cart.jsf" value="My Cart"></h:link>
+        <h:link outcome="#{catalogBean.display()}" value="Catalogue"></h:link>
 		<div style="float: right">
 			<h:form>
 				<h:selectOneMenu value="#{skinBean.skin}">

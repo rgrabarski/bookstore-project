@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<body>
+	<ui:composition template="/templates/basicTemplate.xhtml">
+		<ui:define name="title">
+			Catalog
+		</ui:define>
+
+		<ui:define name="body">
+            <h:form>
+                <h:inputText id="search-label" value="#{catalogBean.label}"></h:inputText>
+                <!--<h:inputText id="search-criterion" value="#{catalogBean.criterion}"></h:inputText>-->
+                <h:selectOneMenu value="#{catalogBean.criterion}">
+                    <f:selectItems value="#{catalogBean.criterions}" />
+                </h:selectOneMenu>
+                <h:commandButton value="Search" action="#{catalogBean.searchByCriterion()}">
+                    <f:ajax execute="@form" render="books"></f:ajax>
+                </h:commandButton>
+            </h:form>
+            <rich:dataTable id="books" value="#{catalogBean.books}" var="book" >
+                <rich:column>
+                    <f:facet name="header">ISBN</f:facet>
+                    <h:outputText value="#{book.isbn}"/>
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header">Title</f:facet>
+                    #{book.title}
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header">Author</f:facet>
+                    #{book.author.lastName} #{book.author.firstName}
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header">Price</f:facet>
+                    #{book.unitPrice}
+                </rich:column>
+            </rich:dataTable>
+		</ui:define>
+
+
+	</ui:composition>
+</body>
+</html>
