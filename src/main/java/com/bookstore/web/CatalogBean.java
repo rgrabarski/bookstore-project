@@ -2,8 +2,8 @@ package com.bookstore.web;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
-import com.bookstore.service.DemoAuthorService;
-import com.bookstore.service.DemoService;
+import com.bookstore.service.AuthorService;
+import com.bookstore.service.CatalogService;
 import com.bookstore.web.util.Criterions;
 
 import javax.annotation.PostConstruct;
@@ -18,8 +18,8 @@ import java.util.List;
 public class CatalogBean {
 
 //	@Inject
-	private DemoService demoService = new DemoService();
-	private DemoAuthorService authorService = new DemoAuthorService();
+	private CatalogService catalogService = new CatalogService();
+	private AuthorService authorService = new AuthorService();
 
     private String label;
     private String criterion;
@@ -36,7 +36,11 @@ public class CatalogBean {
 
     public String searchByCriterion(){
         try {
-            books = demoService.findByLabelAndCriterion(label, criterion);
+            if (label == "") {
+                books = catalogService.findAll();
+            } else {
+                books = catalogService.findByLabelAndCriterion(label, criterion);
+            }
         } catch (Exception e) {
             books = new ArrayList<Book>();
         }
@@ -44,7 +48,7 @@ public class CatalogBean {
     }
 
     public String display(){
-        books = demoService.findAll();
+        books = catalogService.findAll();
         return "/pages/catalog.xhtml";
     }
 

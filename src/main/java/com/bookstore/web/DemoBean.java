@@ -5,21 +5,19 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
-import com.bookstore.service.DemoAuthorService;
-import com.bookstore.service.DemoService;
+import com.bookstore.service.AuthorService;
+import com.bookstore.service.CatalogService;
 
 @ManagedBean(name="demoBean")
 @RequestScoped
 public class DemoBean {
 
 //	@Inject
-	private DemoService demoService = new DemoService();
-	private DemoAuthorService authorService = new DemoAuthorService();
+	private CatalogService catalogService = new CatalogService();
+	private AuthorService authorService = new AuthorService();
 	
 	private String test = "erojkfepof";
 	private List<Book> books ;
@@ -27,7 +25,7 @@ public class DemoBean {
 	
 	@PostConstruct
 	public void init(){
-		books = demoService.findAll();
+		books = catalogService.findAll();
 		authors = authorService.findAll();
 	}
 
