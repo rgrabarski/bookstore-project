@@ -4,6 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j">
 <body>
@@ -34,11 +35,41 @@
                 </rich:column>
                 <rich:column>
                     <f:facet name="header">Author</f:facet>
-                    #{book.author.lastName} #{book.author.firstName}
+                    #{fn:substring(book.author.firstName,0,1)}. #{book.author.lastName}
                 </rich:column>
                 <rich:column>
                     <f:facet name="header">Price</f:facet>
                     #{book.unitPrice}
+                </rich:column>
+                <rich:column style="text-align: center;">
+                    <f:facet name="header">Details</f:facet>
+                    <h:commandButton title="Show infos" image="/images/loupe.png" style="width: 25px; height: 25px;" >
+                        <rich:componentControl target="popup" operation="show" />
+                    </h:commandButton>
+                    <rich:popupPanel id="popup" modal="true" autosized="true" resizeable="false">
+                        <f:facet name="header">
+                            <h:outputText value="#{book.title}" />
+                        </f:facet>
+                        <f:facet name="controls">
+                            <h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
+                                X
+                            </h:outputLink>
+                        </f:facet>
+                        <p>
+                            Title : #{book.title}
+                            <br/>
+                            Author : #{book.author.lastName} #{book.author.firstName}
+                            <br/>
+                            Price : #{book.unitPrice}
+                            <br/>
+                            <h:form>
+                                <h:commandButton title="Add to cart" image="/images/cart_add.png" style="width: 25px; height: 25px;" action="#{cartBean.addToCart(book.isbn)}" >
+
+                                </h:commandButton>
+                            </h:form>
+
+                        </p>
+                    </rich:popupPanel>
                 </rich:column>
             </rich:dataTable>
 		</ui:define>
