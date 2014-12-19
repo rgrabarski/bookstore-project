@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<body>
+	<ui:composition template="/templates/basicTemplate.xhtml">
+
+		<ui:define name="title">
+			Login page.
+		</ui:define>
+		
+		<ui:define name="body">
+			Veuillez vous identifier.
+		</ui:define>
+
+		<ui:define name="extra-infos">
+			<h:form>
+				<fieldset style="width: 400px; margin-top: 50px;">
+					
+					<div style="width: 480px; margin: 0px auto;">
+						<div style="display: block; margin: 10px;">
+							<label style="display: inline-block; width: 100px;">Login</label>
+							<h:inputText value="#{loginBean.login}" id="loginLabel" name="loginLabel" required="true" requiredMessage="Ce champ est obligatoire" style="margin-right: 10px">
+								<f:validateLength minimum="1"></f:validateLength>
+							</h:inputText>
+							<h:message for="loginLabel" style="color:red;"></h:message>
+						</div>
+						
+						<div style="display: block; margin: 10px;">
+							<label style="display: inline-block; width: 100px;">Mot de passe</label>
+							<h:inputSecret value="#{loginBean.pwd}" id="loginPwd" name="loginPwd" required="true" requiredMessage="Ce champ est obligatoire" style="margin-right: 10px">
+								<f:validateLength minimum="1"></f:validateLength>
+							</h:inputSecret>
+							<h:message for="loginPwd" style="color:red;"></h:message>
+						</div>
+						
+						<h:commandButton action="#{loginBean.login()}" value="Connection" style="margin:10px;"></h:commandButton>
+					</div>
+				</fieldset>
+			</h:form>
+			
+			<p style="width: 500px; margin: 10px; text-align: center;">Pas encore inscrit ? C'est <a href="registration.jsf" title="Page d'inscription">ici</a></p>
+		</ui:define>
+
+	</ui:composition>
+</body>
+</html>
