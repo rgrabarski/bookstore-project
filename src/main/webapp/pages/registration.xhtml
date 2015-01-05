@@ -15,21 +15,12 @@
 		
 		<ui:define name="body">
 			<h1>Bonjour et bienvenue</h1>
-			<p>Pour vous inscrire, merci de renseigner le formulaire suivant</p>
+			<p>Pour vous inscrire, merci de renseigner le formulaire suivant :</p>
 			<h:form>
 				<fieldset style="width: 400px; margin-top: 50px;">
 					<div style="width: 480px; margin: 0px auto;">
 						<div style="display: block; margin: 10px;">
-							<label style="display: inline-block; width: 100px;">Email</label>
-							<h:inputText id="registrationEmail" value="#{registrationBean.email}" required="true" requiredMessage="Ce champ est obligatoire" style="margin-right: 10px">
-								<f:validateLength minimum="1"></f:validateLength>
-								<f:validateRegex pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"></f:validateRegex>
-							</h:inputText>
-							<h:message for="registrationEmail" style="color:red;"></h:message>
-						</div>
-						
-						<div style="display: block; margin: 10px;">
-							<label style="display: inline-block; width: 100px;">Login</label>
+							<label style="display: inline-block; width: 200px;">Login</label>
 							<h:inputText id="registrationLogin" value="#{registrationBean.login}" required="true" requiredMessage="Ce champ est obligatoire" style="margin-right: 10px">
 								<f:validateLength minimum="1"></f:validateLength>
 							</h:inputText>
@@ -37,11 +28,41 @@
 						</div>
 						
 						<div style="display: block; margin: 10px;">
-							<label style="display: inline-block; width: 100px;">Mot de passe</label>
+							<label style="display: inline-block; width: 200px;">Email</label>
+							<h:inputText id="registrationEmail" value="#{registrationBean.email}" required="true" requiredMessage="Ce champ est obligatoire" style="margin-right: 10px">
+								<f:validateLength minimum="1"></f:validateLength>
+								<f:validateRegex pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"></f:validateRegex>
+								<f:validator validatorId="emailConfirmationValidator"></f:validator>
+								<f:attribute name="confirmEmail" value="#{confirmEmail}"></f:attribute>
+							</h:inputText>
+							<h:message for="registrationEmail" style="color:red;"></h:message>
+						</div>
+						
+						<div style="display: block; margin: 10px;">
+							<label style="display: inline-block; width: 200px;">Confirmation de l'email</label>
+							<h:inputText id="registrationConfirmationEmail" value="#{registrationBean.confirmedEmail}" required="true" requiredMessage="Ce champ est obligatoire" style="margin-right: 10px" binding="#{confirmEmail}">
+								<f:validateLength minimum="1"></f:validateLength>
+								<f:validateRegex pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"></f:validateRegex>
+							</h:inputText>
+							<h:message for="registrationConfirmationEmail" style="color:red;"></h:message>
+						</div>
+						
+						<div style="display: block; margin: 10px;">
+							<label style="display: inline-block; width: 200px;">Mot de passe</label>
 							<h:inputSecret id="registrationPwd" value="#{registrationBean.pwd}" required="true" requiredMessage="Ce champ est obligatoire" style="margin-right: 10px">
 								<f:validateLength minimum="1"></f:validateLength>
+								<f:validator validatorId="passwordConfirmationValidator"></f:validator>
+								<f:attribute name="initialPassword" value="#{initialPassword}"></f:attribute>
 							</h:inputSecret>
 							<h:message for="registrationPwd" style="color:red;"></h:message>
+						</div>
+						
+						<div style="display: block; margin: 10px;">
+							<label style="display: inline-block; width: 200px;">Confirmation du mot de passe</label>
+							<h:inputSecret id="registrationConfirmationPwd" value="#{registrationBean.confirmedPwd}" required="true" requiredMessage="Ce champ est obligatoire" style="margin-right: 10px" binding="#{initialPassword}">
+								<f:validateLength minimum="1"></f:validateLength>
+							</h:inputSecret>
+							<h:message for="registrationConfirmationPwd" style="color:red;"></h:message>
 						</div>
 						
 						<h:commandButton action="#{registrationBean.register()}" value="S'inscrire" style="margin:10px;"></h:commandButton>

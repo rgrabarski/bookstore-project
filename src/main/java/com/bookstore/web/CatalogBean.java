@@ -9,6 +9,7 @@ import com.bookstore.web.util.Criterions;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,11 +30,15 @@ public class CatalogBean {
 	private List<Author> authors ;
 
 	@PostConstruct
-	public void init(){
+	public void init(){				
 		//books = demoService.findAll();
 		authors = authorService.findAll();
 	}
 
+	/**
+	 * Recherche un livre selon un critère (couple clé / valeur)
+	 * @return
+	 */
     public String searchByCriterion(){
         try {
             if (label == "") {
@@ -47,11 +52,19 @@ public class CatalogBean {
         return null;
     }
 
+    /**
+     * Affiche la page de catalogue avec la liste de tous les livres.
+     * @return La page affichant la liste de tous les livres.
+     */
     public String display(){
         books = catalogService.findAll();
         return "/pages/catalog.xhtml";
     }
 
+    
+    /*
+     * GETTERS & SETTERS
+     * */
 	public List<Book> getBooks() {
 		return books;
 	}

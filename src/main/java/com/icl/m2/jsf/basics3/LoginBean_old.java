@@ -11,7 +11,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 //@Named("loginBean")
 @ManagedBean
 @SessionScoped
-public class LoginBean {
+public class LoginBean_old {
 
 	private String login;
 	

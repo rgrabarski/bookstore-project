@@ -58,6 +58,10 @@ public class CartBean {
 //        }
 //    }
 
+    /**
+     * Ajoute un article au panier.
+     * @param isbn L'isbn du livre à ajouter.
+     */
     public void addToCart(String isbn)
     {
         System.out.println("addToCart function");
