@@ -20,4 +20,17 @@ public interface IUserService {
 	 */
 	public List<User> findUserByLoginAndPwd(String login, String pwd) throws Exception;
 	
+	/**
+	 * Créé et sauvegarde un nouvel utilisateur.
+	 * @param u L'utilisateur à créer.
+	 */
+	public void createUser(User u);
+	
+	/**
+	 * Recherche un utilisateur par son login.
+	 * @param login Le login à rechercher.
+	 * @return L'utilisateur trouvé, {@code null} sinon.
+	 */
+	public User findUserByLogin(String login);
+	
 }

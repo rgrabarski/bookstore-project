@@ -4,10 +4,16 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.bookstore.entities.User;
+import com.bookstore.service.IUserService;
+import com.bookstore.service.database.UserDBService;
+
 @ManagedBean(name="registrationBean")
 @SessionScoped
 public class RegistrationBean {
 
+	private IUserService userService = new UserDBService();
+	
 	private String email;
 	private String confirmedEmail;
 	private String login;
@@ -25,11 +31,44 @@ public class RegistrationBean {
     		// On reste sur la même page
     		return null ;
     	}
+    	
+    	// Création d'un nouvel utilisateur :
+    	User u = new User();
+    	u.setEmail(confirmedEmail);
+    	u.setLogin(login);
+    	u.setPassword(confirmedPwd);
+    	
+    	// On vérifie si l'utilisateur existe déjà en base :
+    	if(userAlreadyExists(u.getLogin())){
+    		// On reste sur la même page :
+    		return null ;
+    	}
+    	
+    	// Sauvegarde de l'utilisateur :
+    	userService.createUser(u);
+    	
     	// Sinon on envoie sur la page de login :
     	return "login";
     }
     
-    @PostConstruct
+    /**
+     * Vérifie si un utilisateur possédant déjà ce login existe déjà.
+     * @param login Le login à tester.
+     * @return {@code true} si l'utilisateur existe, {@code false} sinon.
+     */
+    private boolean userAlreadyExists(String login) {
+		User u = userService.findUserByLogin(login);
+		if(u != null){
+			return true;
+		}
+    	return false;
+	}
+    
+    /**
+     * Initialisation des variables.
+     */
+
+	@PostConstruct
     public void init() {
     	email ="";
     	login = "";

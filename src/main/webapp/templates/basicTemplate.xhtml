@@ -31,7 +31,9 @@
 <!-- 				</h:selectOneMenu> -->
 <!-- 			</h:form> -->
 <!-- 		</div> -->
-		<h:button value="Déconnection" style="float: right;" rendered="#{loginBean.logged}"></h:button>
+		<h:form>
+			<h:commandButton value="Déconnection" style="float: right;" rendered="#{loginBean.logged}" action="#{loginBean.logout()}"></h:commandButton>
+		</h:form>
 	</div>
 
 	<!-- Content -->

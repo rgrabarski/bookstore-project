@@ -48,6 +48,15 @@ public class LoginBean {
     	return null ;
     }
     
+    /**
+     * Déconnecte l'utilisateur.
+     * @return La page de login.
+     */
+    public String logout(){
+    	// On renvoie vers la page de login :
+    	return "login";
+    }
+    
 //    @PostConstruct
 //    public void init() {
 //

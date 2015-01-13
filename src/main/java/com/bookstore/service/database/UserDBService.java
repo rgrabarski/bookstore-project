@@ -3,6 +3,7 @@ package com.bookstore.service.database;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import com.bookstore.entities.User;
 import com.bookstore.service.IUserService;
@@ -32,11 +33,36 @@ public class UserDBService implements IUserService {
 	                .setParameter("login", login)
 	                .setParameter("pwd", pwd)
 	                .getResultList();
-	        em.close();
+//	        em.close();
 	        return users;
 	    } catch (Exception e) {
 	        throw new Exception("UserService:findUserByLoginAndPwd: " + e.getMessage());
 	    }
     }
+
+	/**
+	 * Créé et sauvegarde un nouvel utilisateur.
+	 * @param u L'utilisateur à créer.
+	 */
+	@Override
+	public void createUser(User u) {
+		if(u != null){
+			EntityTransaction transaction = this.em.getTransaction();
+			transaction.begin();
+			em.persist(u);
+			transaction.commit();
+		}
+	}
+
+	/**
+	 * Recherche un utilisateur par son login.
+	 * @param login Le login à rechercher.
+	 * @return L'utilisateur trouvé, {@code null} sinon.
+	 */
+	@Override
+	public User findUserByLogin(String login) {
+		User u = em.find(User.class, login);
+		return u;
+	}
 
 }
