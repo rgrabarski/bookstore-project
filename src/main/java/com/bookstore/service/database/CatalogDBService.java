@@ -1,13 +1,14 @@
-package com.bookstore.service;
+package com.bookstore.service.database;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import com.bookstore.entities.Book;
+import com.bookstore.service.ICatalogService;
 import com.bookstore.web.util.EMFListener;
 
-public class CatalogService {
+public class CatalogDBService implements ICatalogService {
 
     private EntityManager em = EMFListener.createEntityManager();
     

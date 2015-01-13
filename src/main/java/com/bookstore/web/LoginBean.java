@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import com.bookstore.entities.User;
-import com.bookstore.service.UserService;
+import com.bookstore.service.database.UserDBService;
 
 @ManagedBean(name="loginBean")
 @SessionScoped
@@ -16,7 +16,7 @@ public class LoginBean {
     private String pwd;
     private boolean isLogged = false;
     
-    private UserService userService = new UserService();
+    private UserDBService userService = new UserDBService();
 
     /**
      * Fonction de login : vérifie si un utilisateur peut se connecter en vérifiant ses identifiants (user et mot de passe)

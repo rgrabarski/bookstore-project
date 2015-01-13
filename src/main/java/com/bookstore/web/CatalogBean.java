@@ -2,8 +2,8 @@ package com.bookstore.web;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
-import com.bookstore.service.AuthorService;
-import com.bookstore.service.CatalogService;
+import com.bookstore.service.database.AuthorDBService;
+import com.bookstore.service.database.CatalogDBService;
 import com.bookstore.web.util.Criterions;
 
 import javax.annotation.PostConstruct;
@@ -19,8 +19,8 @@ import java.util.List;
 public class CatalogBean {
 
 //	@Inject
-	private CatalogService catalogService = new CatalogService();
-	private AuthorService authorService = new AuthorService();
+	private CatalogDBService catalogService = new CatalogDBService();
+	private AuthorDBService authorService = new AuthorDBService();
 
     private String label;
     private String criterion;

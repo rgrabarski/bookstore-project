@@ -8,16 +8,16 @@ import javax.faces.bean.RequestScoped;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
-import com.bookstore.service.AuthorService;
-import com.bookstore.service.CatalogService;
+import com.bookstore.service.database.AuthorDBService;
+import com.bookstore.service.database.CatalogDBService;
 
 @ManagedBean(name="demoBean")
 @RequestScoped
 public class DemoBean {
 
 //	@Inject
-	private CatalogService catalogService = new CatalogService();
-	private AuthorService authorService = new AuthorService();
+	private CatalogDBService catalogService = new CatalogDBService();
+	private AuthorDBService authorService = new AuthorDBService();
 	
 	private String test = "erojkfepof";
 	private List<Book> books ;

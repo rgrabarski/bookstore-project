@@ -1,18 +1,16 @@
-package com.bookstore.service;
-
-import java.util.List;
+package com.bookstore.service.database;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.transaction.UserTransaction;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
+import com.bookstore.service.IDemoStockService;
 import com.bookstore.service.exception.AuthorUnknownException;
 import com.bookstore.service.exception.BookAlreadyExistsException;
 import com.bookstore.web.util.EMFListener;;
 
-public class DemoStockService {
+public class DemoStockDBService implements IDemoStockService {
 
 	public Book addBookToStock(String isbn, String title, Integer authorId) throws AuthorUnknownException, BookAlreadyExistsException {
 
