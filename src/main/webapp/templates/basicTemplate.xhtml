@@ -15,22 +15,23 @@
 	<!-- Header -->
 	<div
 		style="width: 100%; height: 100px; background-color: #{richSkin.headerBackgroundColor}; font-size: 4em; color: #{richSkin.headTextColor};">
-		<h:graphicImage url="http://www.univ-catholille.fr/img/logo.gif"
-			height="100px" />
+<!-- 		<h:graphicImage url="http://www.univ-catholille.fr/img/logo.gif" -->
+<!-- 			height="100px" /> -->
 		<ui:insert name="title">
 			<h:outputText value="Default Title" />
 		</ui:insert>
-		<h:link outcome="/pages/cart.jsf" value="My Cart"></h:link>
-        <h:link outcome="#{catalogBean.display()}" value="Catalogue"></h:link>
-		<div style="float: right">
-			<h:form>
-				<h:selectOneMenu value="#{skinBean.skin}">
-					<f:selectItems value="#{skinBean.availableSkins}" var="skin"
-						itemLabel="#{skin.label}" itemValue="#{skin}" />
-					<f:ajax  execute="@form" render="@all" />
-				</h:selectOneMenu>
-			</h:form>
-		</div>
+<!-- 		<h:link outcome="/pages/cart.jsf" value="My Cart"></h:link> -->
+<!--         <h:link outcome="#{catalogBean.display()}" value="Catalogue"></h:link> -->
+<!-- 		<div style="float: right"> -->
+<!-- 			<h:form> -->
+<!-- 				<h:selectOneMenu value="#{skinBean.skin}"> -->
+<!-- 					<f:selectItems value="#{skinBean.availableSkins}" var="skin" -->
+<!-- 						itemLabel="#{skin.label}" itemValue="#{skin}" /> -->
+<!-- 					<f:ajax  execute="@form" render="@all" /> -->
+<!-- 				</h:selectOneMenu> -->
+<!-- 			</h:form> -->
+<!-- 		</div> -->
+		<h:button value="Déconnection" style="float: right;" rendered="#{loginBean.logged}"></h:button>
 	</div>
 
 	<!-- Content -->

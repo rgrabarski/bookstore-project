@@ -8,6 +8,8 @@ import javax.faces.bean.RequestScoped;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
+import com.bookstore.service.IAuthorService;
+import com.bookstore.service.ICatalogService;
 import com.bookstore.service.database.AuthorDBService;
 import com.bookstore.service.database.CatalogDBService;
 
@@ -16,8 +18,8 @@ import com.bookstore.service.database.CatalogDBService;
 public class DemoBean {
 
 //	@Inject
-	private CatalogDBService catalogService = new CatalogDBService();
-	private AuthorDBService authorService = new AuthorDBService();
+	private ICatalogService catalogService = new CatalogDBService();
+	private IAuthorService authorService = new AuthorDBService();
 	
 	private String test = "erojkfepof";
 	private List<Book> books ;

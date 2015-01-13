@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import com.bookstore.entities.Book;
+import com.bookstore.service.IDemoStockService;
 import com.bookstore.service.database.DemoStockDBService;
 import com.bookstore.service.exception.AuthorUnknownException;
 import com.bookstore.service.exception.BookAlreadyExistsException;
@@ -17,7 +18,7 @@ import com.bookstore.service.exception.BookAlreadyExistsException;
 @RequestScoped
 public class DemoAddBookBean {
 
-	private DemoStockDBService stockService = new DemoStockDBService();
+	private IDemoStockService stockService = new DemoStockDBService();
 
 	private Book book;
 	

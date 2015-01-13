@@ -2,8 +2,12 @@ package com.bookstore.web;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
+import com.bookstore.service.IAuthorService;
+import com.bookstore.service.ICatalogService;
+import com.bookstore.service.IDemoStockService;
 import com.bookstore.service.database.AuthorDBService;
 import com.bookstore.service.database.CatalogDBService;
+import com.bookstore.service.database.DemoStockDBService;
 import com.bookstore.web.util.Criterions;
 
 import javax.annotation.PostConstruct;
@@ -19,11 +23,11 @@ import java.util.List;
 public class CatalogBean {
 
 //	@Inject
-	private CatalogDBService catalogService = new CatalogDBService();
-	private AuthorDBService authorService = new AuthorDBService();
+	private ICatalogService catalogService = new CatalogDBService();
+	private IAuthorService authorService = new AuthorDBService();
 
-    private String label;
-    private String criterion;
+    private String label = "";
+    private String criterion = "";
     private HashMap<String,String> criterions = new Criterions().getCriterionsMap();
 
 	private List<Book> books ;
@@ -31,8 +35,9 @@ public class CatalogBean {
 
 	@PostConstruct
 	public void init(){				
-		//books = demoService.findAll();
-		authors = authorService.findAll();
+//		books = demoService.findAll();
+//		authors = authorService.findAll();
+		books = catalogService.findAll();
 	}
 
 	/**
