@@ -2,29 +2,26 @@ package com.bookstore.web;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
-import com.bookstore.service.IAuthorService;
 import com.bookstore.service.ICatalogService;
-import com.bookstore.service.IDemoStockService;
-import com.bookstore.service.database.AuthorDBService;
 import com.bookstore.service.database.CatalogDBService;
-import com.bookstore.service.database.DemoStockDBService;
 import com.bookstore.web.util.Criterions;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@SuppressWarnings("serial")
 @ManagedBean(name="catalogBean")
-@RequestScoped
-public class CatalogBean {
+@ViewScoped
+public class CatalogBean implements Serializable {
 
 //	@Inject
 	private ICatalogService catalogService = new CatalogDBService();
-	private IAuthorService authorService = new AuthorDBService();
 
     private String label = "";
     private String criterion = "";
@@ -32,7 +29,11 @@ public class CatalogBean {
 
 	private List<Book> books ;
 	private List<Author> authors ;
+	private Book selectedBook = null;
 
+	/**
+	 * Initialise les données, notamment la liste des livres.
+	 */
 	@PostConstruct
 	public void init(){				
 //		books = demoService.findAll();
@@ -85,7 +86,8 @@ public class CatalogBean {
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
-    public String getLabel() {
+    
+	public String getLabel() {
         return label;
     }
 
@@ -104,4 +106,14 @@ public class CatalogBean {
     public HashMap<String, String> getCriterions() {
         return criterions;
     }
+
+
+    public Book getSelectedBook() {
+		return selectedBook;
+	}
+
+	
+    public void setSelectedBook(Book selectedBook) {
+		this.selectedBook = selectedBook;
+	}
 }

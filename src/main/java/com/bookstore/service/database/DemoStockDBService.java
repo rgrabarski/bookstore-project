@@ -5,11 +5,19 @@ import javax.persistence.EntityTransaction;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
+import com.bookstore.service.IAuthorService;
 import com.bookstore.service.IDemoStockService;
 import com.bookstore.service.exception.AuthorUnknownException;
 import com.bookstore.service.exception.BookAlreadyExistsException;
 import com.bookstore.web.util.EMFListener;;
 
+/**
+ * Classe de démonstrations rcupérant des données depuis la base de données.<br>
+ * Implémente l'interface {@link IDemoStockService}.
+ * 
+ * @author RGAT
+ *
+ */
 public class DemoStockDBService implements IDemoStockService {
 
 	public Book addBookToStock(String isbn, String title, Integer authorId) throws AuthorUnknownException, BookAlreadyExistsException {

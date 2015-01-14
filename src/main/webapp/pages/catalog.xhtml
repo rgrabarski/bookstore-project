@@ -43,35 +43,38 @@
                 </rich:column>
                 <rich:column style="text-align: center;">
                     <f:facet name="header">Details</f:facet>
-                    <h:commandButton title="Show infos" image="/images/loupe.png" style="width: 25px; height: 25px;" >
-                        <rich:componentControl target="popup" operation="show" />
-                    </h:commandButton>
-                    <rich:popupPanel id="popup" modal="true" autosized="true" resizeable="false">
-                        <f:facet name="header">
-                            <h:outputText value="#{book.title}" />
-                        </f:facet>
-                        <f:facet name="controls">
-                            <h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
-                                X
-                            </h:outputLink>
-                        </f:facet>
-                        <p>
-                            Title : #{book.title}
-                            <br/>
-                            Author : #{book.author.lastName} #{book.author.firstName}
-                            <br/>
-                            Price : #{book.unitPrice}
-                            <br/>
-                            <h:form>
-                                <h:commandButton title="Add to cart" image="/images/cart_add.png" style="width: 25px; height: 25px;" action="#{cartBean.addToCart(book.isbn)}" >
-
-                                </h:commandButton>
-                            </h:form>
-
-                        </p>
-                    </rich:popupPanel>
+                    <h:form>
+                    	<a4j:commandButton title="Show infos" image="/images/loupe.png" style="width: 25px; height: 25px;" render="popup" oncomplete="#{rich:component('popup')}.show(); return false;" execute="@this" >
+	                         <f:setPropertyActionListener value="#{book}" target="#{catalogBean.selectedBook}" />
+	                    </a4j:commandButton>
+                    </h:form>
                 </rich:column>
             </rich:dataTable>
+            
+			<!-- Popup servant pour toutes les lignes -->
+            <rich:popupPanel id="popup" modal="true" autosized="true" resizeable="false">
+                <f:facet name="header">
+                    <h:outputText value="#{catalogBean.selectedBook.title}" />
+                </f:facet>
+                <f:facet name="controls">
+                    <h:outputLink value="#" onclick="#{rich:component('popup')}.hide(); return false;">
+                        X
+                    </h:outputLink>
+                </f:facet>
+                <p>
+                    Title : #{catalogBean.selectedBook.title}
+                    <br/>
+                    Author : #{catalogBean.selectedBook.author.lastName} #{catalogBean.selectedBook.author.firstName}
+                    <br/>
+                    Price : #{catalogBean.selectedBook.unitPrice}
+                    <br/>
+                    <h:form>
+                        <h:commandButton title="Add to cart" image="/images/cart_add.png" style="width: 25px; height: 25px;" action="#{cartBean.addToCart(catalogBean.selectedBook.isbn)}" >
+                        </h:commandButton>
+                    </h:form>
+                </p>
+            </rich:popupPanel>
+            
 		</ui:define>
 
 
