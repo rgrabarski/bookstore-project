@@ -42,4 +42,12 @@ public class CatalogDBService implements ICatalogService {
 
     }
 
+    public List<Book> findByMultiCriterions(String author_label, String title_label, String isbn_label, String price_label) throws Exception {
+        try {
+            return null;
+        } catch (Exception e) {
+            throw new Exception("CatalogService:findByMultiCriterions: " + e.getMessage());
+        }
+    }
+
 }
