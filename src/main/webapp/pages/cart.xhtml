@@ -29,21 +29,35 @@
                 </rich:column>
                 <rich:column style="text-align: center;">
                     <f:facet name="header">Unit Price</f:facet>
-                    #{cartline.book.unitPrice}
+                    <h:outputText value="#{cartline.book.unitPrice}">
+                    	<f:convertNumber type="currency" currencySymbol="€"></f:convertNumber>
+                    </h:outputText>
                 </rich:column>
                 <rich:column>
                     <f:facet name="header">Quantity</f:facet>
-                    <rich:inputNumberSpinner style="vertical-align: middle; " value="#{cartline.quantity}" step="1"/>
+                    <h:form>
+                    	<rich:inputNumberSpinner style="vertical-align: middle; " value="#{cartline.quantity}" step="1">
+	                    	<f:attribute name="current" value="#{cartline}"></f:attribute>
+	                    	<f:ajax listener="#{cartBean.updateQuantity}" render="cart headerNbArticles headerPrixTotal" >
+	                    	</f:ajax>
+                    	</rich:inputNumberSpinner>
+                    </h:form>
+                </rich:column>
+                <rich:column>
+                    <f:facet name="header">Total price</f:facet>
+                    <h:outputText value="#{cartline.linePrice}">
+                    	<f:convertNumber type="currency" currencySymbol="€"></f:convertNumber>
+                    </h:outputText>
                 </rich:column>
                 <rich:column style="text-align: center;">
                     <f:facet name="header">Actions</f:facet>
                     <h:form>
-                        <h:commandButton title="Delete" image="/images/bin.png" style="width: 25px; height: 25px;" action="#{cartBean.deleteCartLine(cartline)}">
-                        </h:commandButton>
+                        <a4j:commandButton title="Delete" image="/images/bin.png" style="width: 25px; height: 25px;" action="#{cartBean.deleteCartLine(cartline)}" render="cart, headerNbArticles, headerPrixTotal">
+                        </a4j:commandButton>
                     </h:form>
                 </rich:column>
             </rich:dataTable>
-            <h:outputText value="There is no articles in your cart." rendered="#{empty cartBean.cart || cartBean.cart == null}" />
+            <h:outputText id="noArticle" value="There is no articles in your cart." rendered="#{empty cartBean.cart || cartBean.cart == null}" />
 		</ui:define>
 
 

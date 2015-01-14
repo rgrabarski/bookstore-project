@@ -31,6 +31,18 @@
 <!-- 				</h:selectOneMenu> -->
 <!-- 			</h:form> -->
 <!-- 		</div> -->
+		
+		<div style="display: inline-block; width: 250px; position: relative; right: -700px;">
+			<h:form>
+				<h:commandButton value="Panier" title="Accéder à votre panier" action="#{cartBean.displayCart()}" rendered="#{loginBean.logged}"></h:commandButton>
+			</h:form>
+			<h:outputText id="headerNbArticles" style="font-size: 12px; font-weight: bold; display:block; margin: 0px;" rendered="#{loginBean.logged}" value="Nombre d'articles dans le panier : #{cartBean.nbArticles}"></h:outputText>
+			<h:outputText style="font-size: 12px; font-weight: bold; display:inline;" rendered="#{loginBean.logged}" value="Prix total du panier : "></h:outputText>
+			<h:outputText id="headerPrixTotal" style="font-size: 12px; font-weight: bold; display:inline;" rendered="#{loginBean.logged}" value="#{cartBean.prixTotal}">
+				<f:convertNumber type="currency" currencySymbol="€" ></f:convertNumber>
+			</h:outputText>
+		</div>
+		
 		<h:form>
 			<h:commandButton value="Déconnection" style="float: right;" rendered="#{loginBean.logged}" action="#{loginBean.logout()}"></h:commandButton>
 		</h:form>

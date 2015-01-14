@@ -87,8 +87,8 @@
                     Price : #{catalogBean.selectedBook.unitPrice}
                     <br/>
                     <h:form>
-                        <h:commandButton title="Add to cart" image="/images/cart_add.png" style="width: 25px; height: 25px;" action="#{cartBean.addToCart(catalogBean.selectedBook.isbn)}" >
-                        </h:commandButton>
+                        <a4j:commandButton title="Add to cart" image="/images/cart_add.png" style="width: 25px; height: 25px;" action="#{cartBean.addToCart(catalogBean.selectedBook.isbn)}" render="headerNbArticles, headerPrixTotal" oncomplete="#{rich:component('popup')}.hide(); return false;">
+                        </a4j:commandButton>
                     </h:form>
                 </p>
             </rich:popupPanel>
