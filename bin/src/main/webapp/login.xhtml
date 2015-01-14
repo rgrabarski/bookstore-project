@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<h:head>
+	<title>Bookstore - Login</title>
+</h:head>
+<h:body>
+	<h1>Bookstore</h1>
+	<h:form id="loginForm">
+		<h:panelGrid columns="3">
+			<h:outputLabel value="login" />
+			<h:inputText id="login" value="#{loginBean.login}" required="true">
+				<f:validateRequired />
+				<!-- <f:validateLength minimum="3"></f:validateLength> -->
+			</h:inputText>
+			<h:message for="login" />
+
+			<h:outputLabel value="password" />
+			<h:inputSecret id="password" value="#{loginBean.password}">
+				<f:validateLength minimum="6" />
+				<f:ajax event="keyup" render="passwordBis passwordComplexity"
+					listener="#{loginBean.recomputePasswordComplexityIndicator}" />
+			</h:inputSecret>
+			<h:message for="password" />
+
+			<h:commandButton value="Display My password">
+				<f:ajax event="click" execute="loginForm:password"
+					render="passwordBis" />
+			</h:commandButton>
+			<h:commandButton value="Login" action="#{loginBean.logMe}" />
+		</h:panelGrid>
+		<h:outputText id="passwordBis"
+			value="My password is #{loginBean.password} ... but don't tell anybody!!" />
+		<h:outputText id="passwordComplexity"
+			value="Your password complexity is #{loginBean.passwordComplexityIndicator}. " />
+	</h:form>
+	<h:outputText value="HelloBean from a JSF tag" />
+</h:body>
+</html>

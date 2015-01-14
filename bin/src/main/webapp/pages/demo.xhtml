@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<body>
+	<ui:composition template="/templates/basicTemplate.xhtml">
+		<ui:define name="title">
+			Demo
+		</ui:define>
+
+		<ui:define name="body">
+		
+			<rich:dataTable id="books" value="#{demoBean.books}" var="book" >
+				<rich:column>
+					<f:facet name="header">ISBN</f:facet>
+					<h:outputText value="#{book.isbn}"/>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">Title</f:facet>
+					#{book.title}
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">Author</f:facet>
+					#{book.author.lastName} #{book.author.firstName} 
+				</rich:column>
+			</rich:dataTable>
+
+			<h:form id="addBookForm">
+				<rich:panel id="addbook" >
+					<f:facet name="header">Add a book</f:facet>
+					<h:panelGrid columns="3">
+
+						<h:outputLabel for="isbn" value="ISBN" />
+						<h:inputText id="isbn" value="#{demoAddBookBean.book.isbn}">
+							<f:validateBean />
+						</h:inputText>
+						<rich:message for="isbn" />
+
+						<h:outputLabel for="title" value="Title" />
+						<h:inputText id="title" value="#{demoAddBookBean.book.title}">
+							<f:validateBean />
+						</h:inputText>
+						<rich:message for="title" />
+
+						<h:outputLabel for="author" value="Author" />
+						<rich:select id="author" value="#{demoAddBookBean.authorId}" >
+							<f:selectItem itemLabel="" itemValue="0" />
+							<f:selectItems value="#{demoBean.authors}" var="author"
+								itemLabel="#{author.firstName} #{author.lastName}"
+								itemValue="#{author.id}" />
+						</rich:select>
+						<rich:message for="author" />
+
+						<h:commandButton action="#{demoAddBookBean.addBook}" value="Ajouter"/>
+					</h:panelGrid>
+				</rich:panel> 
+				<rich:messages globalOnly="true"/>
+			</h:form>
+			
+		</ui:define>
+
+
+	</ui:composition>
+</body>
+</html>

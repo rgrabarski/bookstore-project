@@ -29,4 +29,11 @@ public interface ICatalogService {
 
     public List<Book> findByMultiCriterions(String author_label, String title_label, String isbn_label, String price_label) throws Exception;
 	
+    /**
+     * Recherche un livre en focntion de son ISBN.
+     * @param isbn L'ISBN du livre à rechercher.
+     * @return Le livre correspondant à cet ISBN, {@code null} sinon.
+     */
+    public Book findBookByISBN(String isbn);
+    
 }

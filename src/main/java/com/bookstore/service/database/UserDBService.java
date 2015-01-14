@@ -10,7 +10,8 @@ import com.bookstore.service.IUserService;
 import com.bookstore.web.util.EMFListener;
 
 /**
- * Classe permettant de gérer les utilisateurs.
+ * Classe permettant de gérer les utilisateurs venant de la base de données.
+ * Implémente l'interface {@link IUserService}.
  * 
  * @author RGAT
  *

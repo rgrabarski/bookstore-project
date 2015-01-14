@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<h:head>
+	<title>My First JSF App - <ui:insert name="title">Default window title extension</ui:insert></title>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+
+<body>
+
+	<!-- Header -->
+	<div
+		style="width: 100%; height: 100px; background-color: #{richSkin.headerBackgroundColor}; font-size: 4em; color: #{richSkin.headTextColor};">
+<!-- 		<h:graphicImage url="http://www.univ-catholille.fr/img/logo.gif" -->
+<!-- 			height="100px" /> -->
+		<ui:insert name="title">
+			<h:outputText value="Default Title" />
+		</ui:insert>
+<!-- 		<h:link outcome="/pages/cart.jsf" value="My Cart"></h:link> -->
+<!--         <h:link outcome="#{catalogBean.display()}" value="Catalogue"></h:link> -->
+<!-- 		<div style="float: right"> -->
+<!-- 			<h:form> -->
+<!-- 				<h:selectOneMenu value="#{skinBean.skin}"> -->
+<!-- 					<f:selectItems value="#{skinBean.availableSkins}" var="skin" -->
+<!-- 						itemLabel="#{skin.label}" itemValue="#{skin}" /> -->
+<!-- 					<f:ajax  execute="@form" render="@all" /> -->
+<!-- 				</h:selectOneMenu> -->
+<!-- 			</h:form> -->
+<!-- 		</div> -->
+		<h:button value="Déconnection" style="float: right;" rendered="#{loginBean.logged}"></h:button>
+	</div>
+
+	<!-- Content -->
+	<div
+		style="min-height: 570px; padding-top: 5px; background-color: #{richSkin.generalBackgroundColor}">
+		<ui:insert name="body">Default Body</ui:insert>
+		<div style="">
+			<ui:insert name="extra-infos"></ui:insert>
+		</div>
+	</div>
+
+
+
+	<!-- Footer -->
+	<div style="text-align: right">
+		<h:form>
+			<h:commandLink action="#{skinBean.changeSkin('japanCherry')}">
+				<h:graphicImage
+					url="http://www.music-story.com/img/album_J_50/j-dilla-jay-love-japan.jpg" />
+			</h:commandLink>
+		</h:form>
+		My First JSF App / 0.0.1-SNAPSHOT
+	</div>
+
+</body>
+</html>
