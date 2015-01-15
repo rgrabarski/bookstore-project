@@ -37,6 +37,7 @@ public class Book implements Serializable{
 	@Column(name = "UNIT_PRICE")
 	private Double unitPrice;
 
+	@Column(name = "EDITOR")
 	private String editor;
 	
 	@ManyToOne(cascade=CascadeType.ALL)

@@ -56,6 +56,10 @@
                     #{fn:substring(book.author.firstName,0,1)}. #{book.author.lastName}
                 </rich:column>
                 <rich:column>
+                    <f:facet name="header">Editor</f:facet>
+                    #{book.editor}
+                </rich:column>
+                <rich:column>
                     <f:facet name="header">Price</f:facet>
                     #{book.unitPrice}
                 </rich:column>
@@ -83,6 +87,8 @@
                     Title : #{catalogBean.selectedBook.title}
                     <br/>
                     Author : #{catalogBean.selectedBook.author.lastName} #{catalogBean.selectedBook.author.firstName}
+                    <br/>
+                    Editor : #{catalogBean.selectedBook.editor}
                     <br/>
                     Price : #{catalogBean.selectedBook.unitPrice}
                     <br/>

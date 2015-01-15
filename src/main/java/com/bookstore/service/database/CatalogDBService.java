@@ -54,9 +54,17 @@ public class CatalogDBService implements ICatalogService, Serializable {
     	
     	try {
         	em = EMFListener.createEntityManager();
-            books = em.createQuery("select b From Book b where b." + criterion + "= :label", Book.class)
-                    .setParameter("label", label)
-                    .getResultList();
+			//Recherche concernant un prix inférieur à celui demandé
+			if (criterion.equals("unitPrice")){
+				books = em.createQuery("select b From Book b where b." + criterion + "< :label", Book.class)
+						.setParameter("label", Double.parseDouble(label))
+						.getResultList();
+			} else { // les autres recherches
+				books = em.createQuery("select b From Book b where b." + criterion + "= :label", Book.class)
+						.setParameter("label", label)
+						.getResultList();
+			}
+
         } catch (Exception e) {
             throw new Exception("CatalogService:findByLabelAndCriterion: " + e.getMessage());
         }finally{

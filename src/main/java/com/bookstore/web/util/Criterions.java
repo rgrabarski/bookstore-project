@@ -22,11 +22,9 @@ public class Criterions {
     {
         criterionsMap.put("Titre", "title");
         criterionsMap.put("Auteur", "author.lastName");
-        //TODO
-        //criterionsMap.put("editor", "title");
+        criterionsMap.put("Editeur", "editor");
         criterionsMap.put("ISBN", "isbn");
-        //TODO
-        //price
+        criterionsMap.put("Prix inférieur à", "unitPrice");
     }
 
     public Criterions() {

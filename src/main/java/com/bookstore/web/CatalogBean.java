@@ -47,7 +47,7 @@ public class CatalogBean implements Serializable {
 	}
 
 	/**
-	 * Recherche un livre selon un critère (couple clé / valeur)
+	 * Recherche un livre selon les critères de recherches entrées dans les formulaires
 	 * @return
 	 */
     public String searchByCriterion(){
