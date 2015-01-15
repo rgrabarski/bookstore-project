@@ -3,7 +3,7 @@ package com.bookstore.web;
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
 import com.bookstore.service.ICatalogService;
-import com.bookstore.service.database.CatalogDBService;
+import com.bookstore.service.factory.CatalogFactory;
 import com.bookstore.web.util.Criterions;
 
 import javax.annotation.PostConstruct;
@@ -15,13 +15,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Classe représentant un bean de vue.<br>
+ * Le bean représente la page de catalogue.
+ * 
+ * @author RGAT
+ *
+ */
 @SuppressWarnings("serial")
 @ManagedBean(name="catalogBean")
 @ViewScoped
 public class CatalogBean implements Serializable {
 
-//	@Inject
-	private ICatalogService catalogService = new CatalogDBService();
+	// Récupération d'un service de gestion du catalogue par le pattern Factory :
+	private ICatalogService catalogService = CatalogFactory.getCatalogServiceInstance();
 
     private String label = "";
     private String criterion = "";
@@ -36,8 +43,6 @@ public class CatalogBean implements Serializable {
 	 */
 	@PostConstruct
 	public void init(){				
-//		books = demoService.findAll();
-//		authors = authorService.findAll();
 		books = catalogService.findAll();
 	}
 

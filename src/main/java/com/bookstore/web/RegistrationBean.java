@@ -6,13 +6,21 @@ import javax.faces.bean.SessionScoped;
 
 import com.bookstore.entities.User;
 import com.bookstore.service.IUserService;
-import com.bookstore.service.database.UserDBService;
+import com.bookstore.service.factory.UserFactory;
 
+/**
+ * Classe représentant un bean de session.<br>
+ * Le bean représente la page d'enregistrement.
+ * 
+ * @author RGAT
+ *
+ */
 @ManagedBean(name="registrationBean")
 @SessionScoped
 public class RegistrationBean {
 
-	private IUserService userService = new UserDBService();
+	// Récupération d'un service de gestion des utilisateurs par le pattern Factory :
+	private IUserService userService = UserFactory.getUserServiceInstance();
 	
 	private String email;
 	private String confirmedEmail;
@@ -67,7 +75,6 @@ public class RegistrationBean {
     /**
      * Initialisation des variables.
      */
-
 	@PostConstruct
     public void init() {
     	email ="";

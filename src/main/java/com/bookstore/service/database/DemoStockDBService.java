@@ -5,7 +5,6 @@ import javax.persistence.EntityTransaction;
 
 import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
-import com.bookstore.service.IAuthorService;
 import com.bookstore.service.IDemoStockService;
 import com.bookstore.service.exception.AuthorUnknownException;
 import com.bookstore.service.exception.BookAlreadyExistsException;
@@ -20,6 +19,9 @@ import com.bookstore.web.util.EMFListener;;
  */
 public class DemoStockDBService implements IDemoStockService {
 
+	/**
+	 * Ajoute un livre au stock.
+	 */
 	public Book addBookToStock(String isbn, String title, Integer authorId) throws AuthorUnknownException, BookAlreadyExistsException {
 
 		EntityManager em = EMFListener.createEntityManager();

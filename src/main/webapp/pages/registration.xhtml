@@ -23,6 +23,7 @@
 							<label style="display: inline-block; width: 200px;">Login</label>
 							<h:inputText id="registrationLogin" value="#{registrationBean.login}" required="true" requiredMessage="Ce champ est obligatoire" style="margin-right: 10px">
 								<f:validateLength minimum="1"></f:validateLength>
+								<f:validator validatorId="uniqueLoginValidator"></f:validator>
 							</h:inputText>
 							<h:message for="registrationLogin" style="color:red;"></h:message>
 						</div>
@@ -69,7 +70,7 @@
 					</div>
 				</fieldset>
 			</h:form>
-
+			<p style="width: 500px; margin: 10px; text-align: center;">Retour à la <a href="login.jsf" title="Page de login">page de login</a>.</p>
 		</ui:define>
 
 		<ui:define name="extra-infos">

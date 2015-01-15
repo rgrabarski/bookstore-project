@@ -1,9 +1,8 @@
 package com.bookstore.web;
 
 import com.bookstore.entities.Book;
-import com.bookstore.entities.CartLine;
 import com.bookstore.service.ICatalogService;
-import com.bookstore.service.database.CatalogDBService;
+import com.bookstore.service.factory.CatalogFactory;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -13,12 +12,21 @@ import javax.faces.event.AjaxBehaviorEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe représentant un bean de session.<br>
+ * Ce bean représente le panier de l'utilisateur. 
+ * 
+ * @author RGAT
+ *
+ */
 @ManagedBean(name="cartBean")
 @SessionScoped
 public class CartBean {
 
+    // Récupération d'un service de gestion des utilisateurs par le pattern Factory :
+    private ICatalogService catalogService = CatalogFactory.getCatalogServiceInstance();
+    
     private List<CartLine> cart ;
-    private ICatalogService catalogService = new CatalogDBService();
     private int nbArticles = 0;
     private double prixTotal = 0.0 ;
 

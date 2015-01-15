@@ -2,6 +2,12 @@ package com.bookstore.web.util;
 
 import java.util.HashMap;
 
+/**
+ * Représente une correspondance entre un mot à afficher et un attribut d'objet.
+ * 
+ * @author RGAT
+ *
+ */
 public class Criterions {
     /**
      * key = word display
@@ -9,6 +15,9 @@ public class Criterions {
      */
     private HashMap<String, String> criterionsMap = new HashMap<String,String>();
 
+    /**
+     * Initialise la HashMap des critères avec la correspondance "Mot a afficher" <=> "attribut"
+     */
     private void initCriterionsMap()
     {
         criterionsMap.put("Titre", "title");

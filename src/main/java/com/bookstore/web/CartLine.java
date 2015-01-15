@@ -1,5 +1,13 @@
-package com.bookstore.entities;
+package com.bookstore.web;
 
+import com.bookstore.entities.Book;
+
+/**
+ * Représente une ligne du panier.
+ * 
+ * @author RGAT
+ *
+ */
 public class CartLine {
 
     private Book book;
@@ -9,6 +17,12 @@ public class CartLine {
     public CartLine() {
     }
 
+    /**
+     * Constructeur.
+     * @param book Le livre pour lequel on constitue une ligne du panier.
+     * @param quantity Le nombre de livres composant la ligne du panier
+     * @throws Exception Si le livre est nul ou si la quantité est inférieure à 1.
+     */
     public CartLine(Book book, Integer quantity) throws Exception {
         if (book != null && quantity > 0) {
             this.book = book;
@@ -19,6 +33,9 @@ public class CartLine {
         }
     }
 
+    /* 
+     * GETTERS AND SETTERS 
+     * */
     public Book getBook() {
         return book;
     }

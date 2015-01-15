@@ -7,8 +7,15 @@ import javax.faces.bean.SessionScoped;
 
 import com.bookstore.entities.User;
 import com.bookstore.service.IUserService;
-import com.bookstore.service.database.UserDBService;
+import com.bookstore.service.factory.UserFactory;
 
+/**
+ * Classe représentant un bean de session.<br>
+ * Le bean représente la page de login.
+ * 
+ * @author RGAT
+ *
+ */
 @ManagedBean(name="loginBean")
 @SessionScoped
 public class LoginBean {
@@ -17,7 +24,8 @@ public class LoginBean {
     private String pwd;
     private boolean isLogged = false;
     
-    private IUserService userService = new UserDBService();
+    // Récupération d'un service de gestion des utilisateurs par le pattern Factory :
+    private IUserService userService = UserFactory.getUserServiceInstance();
 
     /**
      * Fonction de login : vérifie si un utilisateur peut se connecter en vérifiant ses identifiants (user et mot de passe)
@@ -53,15 +61,12 @@ public class LoginBean {
      * @return La page de login.
      */
     public String logout(){
+    	// On déconnecte l'utilisateur :
+    	this.isLogged = false ;
     	// On renvoie vers la page de login :
     	return "login";
     }
     
-//    @PostConstruct
-//    public void init() {
-//
-//    }
-
     
     /* GETTERS AND SETTERS */
     

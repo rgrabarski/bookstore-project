@@ -14,34 +14,34 @@
 		</ui:define>
 
 		<ui:define name="body">
-            <!--<h:form>-->
-                <!--<h:inputText id="search-label" value="#{catalogBean.label}"></h:inputText>-->
-                <!--&lt;!&ndash;<h:inputText id="search-criterion" value="#{catalogBean.criterion}"></h:inputText>&ndash;&gt;-->
-                <!--<h:selectOneMenu value="#{catalogBean.criterion}">-->
-                    <!--<f:selectItems value="#{catalogBean.criterions}" />-->
-                <!--</h:selectOneMenu>-->
-                <!--<h:commandButton value="Search" action="#{catalogBean.searchByCriterion()}">-->
-                    <!--<f:ajax execute="@form" render="books"></f:ajax>-->
-                <!--</h:commandButton>-->
-            <!--</h:form>-->
             <h:form>
-                <h5>Auteur</h5>
-                <h:inputText id="search-author-label" value="#{catalogBean.author_label}"></h:inputText>
-                <h5>Titre</h5>
-                <h:inputText id="search-title-label" value="#{catalogBean.title_label}"></h:inputText>
-                <h5>isbn</h5>
-                <h:inputText id="search-isbn-label" value="#{catalogBean.isbn_label}"></h:inputText>
-                <h5>Prix</h5>
-                <h:inputText id="search-price-label" value="#{catalogBean.price_label}"></h:inputText>
-
-                <!--<h:inputText id="search-criterion" value="#{catalogBean.criterion}"></h:inputText>-->
-                <!--<h:selectOneMenu value="#{catalogBean.criterion}">-->
-                    <!--<f:selectItems value="#{catalogBean.criterions}" />-->
-                <!--</h:selectOneMenu>-->
-                <h:commandButton value="Search" action="#{catalogBean.findByMultiCriterions()}">
+                <h:inputText id="search-label" value="#{catalogBean.label}"></h:inputText>
+<!--                 <h:inputText id="search-criterion" value="#{catalogBean.criterion}"></h:inputText> -->
+                <h:selectOneMenu value="#{catalogBean.criterion}">
+                    <f:selectItems value="#{catalogBean.criterions}" />
+                </h:selectOneMenu>
+                <h:commandButton value="Search" action="#{catalogBean.searchByCriterion()}">
                     <f:ajax execute="@form" render="books"></f:ajax>
                 </h:commandButton>
             </h:form>
+<!--             <h:form> -->
+<!--                 <h5>Auteur</h5> -->
+<!--                 <h:inputText id="search-author-label" value="#{catalogBean.author_label}"></h:inputText> -->
+<!--                 <h5>Titre</h5> -->
+<!--                 <h:inputText id="search-title-label" value="#{catalogBean.title_label}"></h:inputText> -->
+<!--                 <h5>isbn</h5> -->
+<!--                 <h:inputText id="search-isbn-label" value="#{catalogBean.isbn_label}"></h:inputText> -->
+<!--                 <h5>Prix</h5> -->
+<!--                 <h:inputText id="search-price-label" value="#{catalogBean.price_label}"></h:inputText> -->
+
+<!--                 <h:inputText id="search-criterion" value="#{catalogBean.criterion}"></h:inputText> -->
+<!--                 <h:selectOneMenu value="#{catalogBean.criterion}"> -->
+<!--                     <f:selectItems value="#{catalogBean.criterions}" /> -->
+<!--                 </h:selectOneMenu> -->
+<!--                 <h:commandButton value="Search" action="#{catalogBean.findByMultiCriterions()}"> -->
+<!--                     <f:ajax execute="@form" render="books"></f:ajax> -->
+<!--                 </h:commandButton> -->
+<!--             </h:form> -->
             <rich:dataTable id="books" value="#{catalogBean.books}" var="book" >
                 <rich:column>
                     <f:facet name="header">ISBN</f:facet>

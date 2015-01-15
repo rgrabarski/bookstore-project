@@ -5,6 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ *Représente un utilisateur et réalise le binding relationnel avec la base de données.
+ * 
+ * @author RGAT
+ *
+ */
 @Entity
 @Table(name="USERS")
 public class User {
@@ -21,6 +27,7 @@ public class User {
 		super();
 	}
 
+	/* GETTERS AND SETTERS */
 	public String getLogin() {
 		return login;
 	}

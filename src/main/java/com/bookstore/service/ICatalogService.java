@@ -1,6 +1,5 @@
 package com.bookstore.service;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 import com.bookstore.entities.Book;
@@ -27,7 +26,7 @@ public interface ICatalogService {
 	 */
     public List<Book> findByLabelAndCriterion(String label, String criterion) throws Exception;
 
-    public List<Book> findByMultiCriterions(String author_label, String title_label, String isbn_label, String price_label) throws Exception;
+//    public List<Book> findByMultiCriterions(String author_label, String title_label, String isbn_label, String price_label) throws Exception;
 	
     /**
      * Recherche un livre en focntion de son ISBN.

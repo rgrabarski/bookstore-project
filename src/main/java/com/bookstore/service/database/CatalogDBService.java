@@ -11,7 +11,7 @@ import com.bookstore.web.util.EMFListener;
 
 /**
  * Classe permettant de récupérer les informations relatives au catalogue depuis la base de données.<br>
- * Implémente l'interface {@link ICatalogService}.
+ * Implémente l'interface {@link ICatalogService} et {@link Serializable}.
  * 
  * @author RGAT
  *
@@ -72,13 +72,13 @@ public class CatalogDBService implements ICatalogService, Serializable {
     }
 
 
-    public List<Book> findByMultiCriterions(String author_label, String title_label, String isbn_label, String price_label) throws Exception {
-        try {
-            return null;
-        } catch (Exception e) {
-            throw new Exception("CatalogService:findByMultiCriterions: " + e.getMessage());
-        }
-    }
+//    public List<Book> findByMultiCriterions(String author_label, String title_label, String isbn_label, String price_label) throws Exception {
+//        try {
+//            return null;
+//        } catch (Exception e) {
+//            throw new Exception("CatalogService:findByMultiCriterions: " + e.getMessage());
+//        }
+//    }
 
     /**
      * Recherche en base de données un livre en focntion de son ISBN.

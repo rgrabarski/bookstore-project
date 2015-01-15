@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import com.bookstore.entities.Book;
 import com.bookstore.service.IDemoStockService;
@@ -24,7 +23,7 @@ public class DemoAddBookBean {
 	
 	private Integer authorId;
 
-	//the list of books is sotred inside, if we want to "refersh it " we need the bean
+	//the list of books is stored inside, if we want to "refersh it " we need the bean
 	@ManagedProperty("#{demoBean}")
 	private DemoBean demoBean;
 	
@@ -50,6 +49,10 @@ public class DemoAddBookBean {
 		authorId = 0;
 	}
 
+	/*
+	 * GETTERS AND SETTERS
+	 * */
+	
 	public Book getBook() {
 		return book;
 	}

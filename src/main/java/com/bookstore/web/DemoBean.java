@@ -10,18 +10,18 @@ import com.bookstore.entities.Author;
 import com.bookstore.entities.Book;
 import com.bookstore.service.IAuthorService;
 import com.bookstore.service.ICatalogService;
-import com.bookstore.service.database.AuthorDBService;
-import com.bookstore.service.database.CatalogDBService;
+import com.bookstore.service.factory.AuthorFactory;
+import com.bookstore.service.factory.CatalogFactory;
 
 @ManagedBean(name="demoBean")
 @RequestScoped
 public class DemoBean {
 
-//	@Inject
-	private ICatalogService catalogService = new CatalogDBService();
-	private IAuthorService authorService = new AuthorDBService();
+	// Récupération d'un service de gestion du catalogue par le pattern Factory :
+	private ICatalogService catalogService = CatalogFactory.getCatalogServiceInstance();
+	// Récupération d'un service de gestion des auteurs par le pattern Factory :
+	private IAuthorService authorService = AuthorFactory.getAuthorServiceInstance();
 	
-	private String test = "erojkfepof";
 	private List<Book> books ;
 	private List<Author> authors ;
 	
@@ -31,20 +31,16 @@ public class DemoBean {
 		authors = authorService.findAll();
 	}
 
+	/*
+	 * GETTERS AND SETTERS
+	 * */
+	
 	public List<Book> getBooks() {
 		return books;
 	}
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
-	}
-
-	public String getTest() {
-		return test;
-	}
-
-	public void setTest(String test) {
-		this.test = test;
 	}
 
 	public List<Author> getAuthors() {

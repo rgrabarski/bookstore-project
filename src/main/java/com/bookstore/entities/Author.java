@@ -4,22 +4,26 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.Generated;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Version;
 
+/**
+ * Représente un auteur et réalise le binding relationnel avec la base de données.
+ * 
+ * @author RGAT
+ *
+ */
+
+@SuppressWarnings("serial")
 @Entity
 @Table(name="AUTHORS")
 @NamedQuery(name="Author.allSorted", query="Select a From Author a ORDER BY a.lastName, a.firstName")
@@ -42,11 +46,9 @@ public class Author implements Serializable{
 	@OneToMany(mappedBy="author", cascade=CascadeType.ALL, orphanRemoval=true)
 	//@JoinColumn(name="AUTHOR_ID")
 	private List<Book> books;
-	
-//	@Version
-//	private long version;
 
 	
+	/* GETTERS AND SETTERS */
 	public Author(){
 		super();
 	}

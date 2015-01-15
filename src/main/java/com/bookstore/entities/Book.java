@@ -1,8 +1,6 @@
 package com.bookstore.entities;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,12 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+/**
+ * Représente un livre et réalise le binding relationnel avec la base de données.
+ * 
+ * @author RGAT
+ *
+ */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "BOOKS")
 public class Book implements Serializable{
@@ -42,6 +46,8 @@ public class Book implements Serializable{
 		super();
 	}
 
+	
+	/* GETTERS AND SETTERS */
 	public String getIsbn() {
 		return isbn;
 	}
