@@ -1,5 +1,7 @@
 package com.bookstore.web.util;
 
+import com.google.common.annotations.VisibleForTesting;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -27,5 +29,10 @@ public class EMFListener  implements ServletContextListener {
 
 	        return emf.createEntityManager();
 	    }
+
+	@VisibleForTesting
+	public static void setEmf(EntityManagerFactory entityManagerFactory) {
+		emf = entityManagerFactory;
+	}
 
 }

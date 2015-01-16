@@ -54,3 +54,4 @@ target
 *.trace.db
 src/h2/bookstoreDB.mv.db
 src/h2/bookstoreDB.trace.db
+*.log
