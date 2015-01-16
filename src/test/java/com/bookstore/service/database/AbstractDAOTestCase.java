@@ -14,9 +14,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- * Created by Maximilien on 01/10/2014.
- */
 public class AbstractDAOTestCase {
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractDAOTestCase.class);
 

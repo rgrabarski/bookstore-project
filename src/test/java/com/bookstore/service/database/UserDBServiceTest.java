@@ -34,12 +34,24 @@ public class UserDBServiceTest extends AbstractDAOTestCase {
 
     @Test
     public void testFindUserByLogin() throws Exception {
-//        User userFound = userService.findUserByLogin("yhovart");
-//
-//        assertThat(userFound, allOf(
-//                Matchers.<User>hasProperty("email", is("yhovart@gmail.com")),
-//                Matchers.<User>hasProperty("login", is("yhovart")),
-//                Matchers.<User>hasProperty("password", is("yh0vart"))
-//        ));
+        User userFound = userService.findUserByLogin("yhovart");
+
+        assertThat(userFound, allOf(
+                Matchers.<User>hasProperty("email", is("yhovart@gmail.com")),
+                Matchers.<User>hasProperty("login", is("yhovart")),
+                Matchers.<User>hasProperty("password", is("yhovartpwd"))
+        ));
     }
+
+    @Test
+    public void testfindUserByLoginAndPwd() throws Exception {
+        User userFound = userService.findUserByLoginAndPwd("yhovart", "yhovartpwd");
+
+        assertThat(userFound, allOf(
+                Matchers.<User>hasProperty("email", is("yhovart@gmail.com")),
+                Matchers.<User>hasProperty("login", is("yhovart")),
+                Matchers.<User>hasProperty("password", is("yhovartpwd"))
+        ));
+    }
+
 }

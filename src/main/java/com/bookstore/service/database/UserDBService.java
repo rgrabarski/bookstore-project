@@ -27,15 +27,15 @@ public class UserDBService implements IUserService {
 	 * @return La liste des utilisateurs trouvés.
 	 * @throws Exception En cas d'erreur.
 	 */
-	public List<User> findUserByLoginAndPwd(String login, String pwd) throws Exception{
+	public User findUserByLoginAndPwd(String login, String pwd) throws Exception{
 	
 	    try {
-	        List<User> users = this.em.createQuery("select u From User u where u.login = :login and u.password = :pwd", User.class)
+	        User user = this.em.createQuery("select u From User u where u.login = :login and u.password = :pwd", User.class)
 	                .setParameter("login", login)
 	                .setParameter("pwd", pwd)
-	                .getResultList();
+	                .getSingleResult();
 //	        em.close();
-	        return users;
+	        return user;
 	    } catch (Exception e) {
 	        throw new Exception("UserService:findUserByLoginAndPwd: " + e.getMessage());
 	    }

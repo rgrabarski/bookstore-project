@@ -18,7 +18,7 @@ public interface IUserService {
 	 * @return La liste des utilisateurs trouvés.
 	 * @throws Exception En cas d'erreur.
 	 */
-	public List<User> findUserByLoginAndPwd(String login, String pwd) throws Exception;
+	public User findUserByLoginAndPwd(String login, String pwd) throws Exception;
 	
 	/**
 	 * Créé et sauvegarde un nouvel utilisateur.

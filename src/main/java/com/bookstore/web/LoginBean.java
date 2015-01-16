@@ -35,11 +35,11 @@ public class LoginBean {
      */
     public String login(){
     	try {
-    		// récupération d'une liste d'utilisateurs correspondants au coupe login/pwd :
-			List<User> userList = userService.findUserByLoginAndPwd(login, pwd);
+    		// récupération de l'utilisateur correspondant au couple login/pwd :
+			User user = userService.findUserByLoginAndPwd(login, pwd);
 			
 			// Si la liste est ni nulle ni vide :
-			if(userList != null && ! userList.isEmpty() && userList.size() != 0){
+			if(user != null){
 				// Alors on connecte l'utilisateur :
 				isLogged = true ;
 				// Et on le redirige vers la page de catalogue :
