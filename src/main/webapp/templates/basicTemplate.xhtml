@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:rich="http://richfaces.org/rich"
-	xmlns:a4j="http://richfaces.org/a4j">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
 <h:head>
 	<title>My First JSF App - <ui:insert name="title">Default window title extension</ui:insert></title>
 	<h:outputStylesheet library="css" name="style.css" />
@@ -12,63 +12,63 @@
 
 <body>
 
-	<!-- Header -->
-	<div style="width: 100%; height: 100px; background-color: #{richSkin.headerBackgroundColor}; color: #{richSkin.headTextColor};">
-		
-		<div style="width:300px; display: inline-block; vertical-align: middle; font-size: 4em;">
-			<ui:insert name="title">
-				<h:outputText value="Default Title" />
-			</ui:insert>
-		</div>
-		
-		<div style="width:900px; display: inline-block; vertical-align: middle;">
-			<div style="width: 880px ;display: inline-block; height:100x; ">
-				<h:form style="display: inline-block;">
-					<a href="./catalog.jsf" style="margin:0px 20px; font-weight: bold;" >Catalogue</a>
-					<a href="./../index.jsf"  style="margin:0px 20px; font-weight: bold;" >Accueil</a>
-					<h:commandButton value="Panier" title="Accéder à votre panier" action="#{cartBean.displayCart()}" rendered="#{loginBean.logged}"></h:commandButton>
+<!-- Header -->
+<div style="width: 100%; height: 100px; background-color: #{richSkin.headerBackgroundColor}; color: #{richSkin.headTextColor};">
 
-					<div style="width: 400px; display: inline-block; height: 100px;">
-						<p style="margin: 0px; vertical-align: middle; display: inline-block;">
-							<h:outputText id="headerNbArticles" style="font-size: 12px; font-weight: bold; margin: 0px;" rendered="#{loginBean.logged}" value="Nombre d'articles dans le panier : #{cartBean.nbArticles}"></h:outputText>
-							<br />
-							<br />
-							<h:outputText style="font-size: 12px; font-weight: bold;" rendered="#{loginBean.logged}" value="Prix total du panier : "></h:outputText>
-							<h:outputText id="headerPrixTotal" style="font-size: 12px; font-weight: bold;" rendered="#{loginBean.logged}" value="#{cartBean.prixTotal}">
-								<f:convertNumber type="currency" currencySymbol="€" ></f:convertNumber>
-							</h:outputText>
-						</p>
-					</div>
-					
-					<h:commandButton value="Déconnection" title="Se déconnecter" action="#{loginBean.logout()}" rendered="#{loginBean.logged}"></h:commandButton>
-					
-				</h:form>
+	<div style="width:300px; display: inline-block; vertical-align: middle; font-size: 4em;">
+		<ui:insert name="title">
+			<h:outputText value="Default Title" />
+		</ui:insert>
+	</div>
+
+	<div style="width:900px; display: inline-block; vertical-align: middle;">
+		<div style="width: 880px ;display: inline-block; height:100x; ">
+			<a href="./catalog.jsf" style="margin:0px 20px; font-weight: bold;" >Catalogue</a>
+			<a href="./../index.jsf"  style="margin:0px 20px; font-weight: bold;" >Accueil</a>
+			<h:form style="display: inline-block;">
+				<h:commandButton value="Panier" title="Accéder à votre panier" action="#{cartBean.displayCart()}" rendered="#{loginBean.logged}"></h:commandButton>
+			</h:form>
+			<div style="width: 400px; display: inline-block; height: 100px;">
+				<p style="margin: 0px; vertical-align: middle; display: inline-block;">
+					<h:outputText id="headerNbArticles" style="font-size: 12px; font-weight: bold; margin: 0px;" rendered="#{loginBean.logged}" value="Nombre d'articles dans le panier : #{cartBean.nbArticles}"></h:outputText>
+					<br />
+					<br />
+					<h:outputText style="font-size: 12px; font-weight: bold;" rendered="#{loginBean.logged}" value="Prix total du panier : "></h:outputText>
+					<h:outputText id="headerPrixTotal" style="font-size: 12px; font-weight: bold;" rendered="#{loginBean.logged}" value="#{cartBean.prixTotal}">
+						<f:convertNumber type="currency" currencySymbol="€" ></f:convertNumber>
+					</h:outputText>
+				</p>
 			</div>
-			
-		</div>
-	</div>
+			<h:form style="display: inline-block;">
+				<h:commandButton value="Déconnection" title="Se déconnecter" action="#{loginBean.logout()}" rendered="#{loginBean.logged}"></h:commandButton>
+			</h:form>
 
-	<!-- Content -->
-	<div
+		</div>
+
+	</div>
+</div>
+
+<!-- Content -->
+<div
 		style="min-height: 570px; padding-top: 5px; background-color: #{richSkin.generalBackgroundColor}">
-		<ui:insert name="body">Default Body</ui:insert>
-		<div style="">
-			<ui:insert name="extra-infos"></ui:insert>
-		</div>
+	<ui:insert name="body">Default Body</ui:insert>
+	<div style="">
+		<ui:insert name="extra-infos"></ui:insert>
 	</div>
+</div>
 
 
 
-	<!-- Footer -->
-	<div style="text-align: right">
-		<h:form>
-			<h:commandLink action="#{skinBean.changeSkin('japanCherry')}">
-				<h:graphicImage
+<!-- Footer -->
+<div style="text-align: right">
+	<h:form>
+		<h:commandLink action="#{skinBean.changeSkin('japanCherry')}">
+			<h:graphicImage
 					url="http://www.music-story.com/img/album_J_50/j-dilla-jay-love-japan.jpg" />
-			</h:commandLink>
-		</h:form>
-		My First JSF App / 0.0.1-SNAPSHOT
-	</div>
+		</h:commandLink>
+	</h:form>
+	My First JSF App / 0.0.1-SNAPSHOT
+</div>
 
 </body>
 </html>
