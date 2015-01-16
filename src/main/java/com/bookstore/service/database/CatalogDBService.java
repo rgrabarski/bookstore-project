@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import com.bookstore.entities.Book;
 import com.bookstore.service.ICatalogService;
 import com.bookstore.web.util.EMFListener;
+import org.hibernate.Query;
 
 /**
  * Classe permettant de récupérer les informations relatives au catalogue depuis la base de données.<br>
@@ -60,8 +61,8 @@ public class CatalogDBService implements ICatalogService, Serializable {
 						.setParameter("label", Double.parseDouble(label))
 						.getResultList();
 			} else { // les autres recherches
-				books = em.createQuery("select b From Book b where b." + criterion + "= :label", Book.class)
-						.setParameter("label", label)
+				books = em.createQuery("select b From Book b where upper(b." + criterion + ") LIKE :label", Book.class)
+						.setParameter("label", "%" + label.toUpperCase() + "%")
 						.getResultList();
 			}
 
