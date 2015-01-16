@@ -10,7 +10,7 @@
 <body>
 	<ui:composition template="/templates/basicTemplate.xhtml">
 		<ui:define name="title">
-			<h:outputText value="Catalog"></h:outputText>
+			<h:outputText value="Catalogue"></h:outputText>
 		</ui:define>
 
 		<ui:define name="body">
@@ -20,7 +20,7 @@
                 <h:selectOneMenu value="#{catalogBean.criterion}">
                     <f:selectItems value="#{catalogBean.criterions}" />
                 </h:selectOneMenu>
-                <h:commandButton value="Search" action="#{catalogBean.searchByCriterion()}">
+                <h:commandButton value="Rechercher" action="#{catalogBean.searchByCriterion()}">
                     <f:ajax execute="@form" render="books"></f:ajax>
                 </h:commandButton>
             </h:form>
@@ -48,19 +48,19 @@
                     <h:outputText value="#{book.isbn}"/>
                 </rich:column>
                 <rich:column>
-                    <f:facet name="header">Title</f:facet>
+                    <f:facet name="header">Titre</f:facet>
                     #{book.title}
                 </rich:column>
                 <rich:column>
-                    <f:facet name="header">Author</f:facet>
+                    <f:facet name="header">Auteur</f:facet>
                     #{fn:substring(book.author.firstName,0,1)}. #{book.author.lastName}
                 </rich:column>
                 <rich:column>
-                    <f:facet name="header">Editor</f:facet>
+                    <f:facet name="header">Editeur</f:facet>
                     #{book.editor}
                 </rich:column>
                 <rich:column>
-                    <f:facet name="header">Price</f:facet>
+                    <f:facet name="header">Prix</f:facet>
                     #{book.unitPrice}
                 </rich:column>
                 <rich:column style="text-align: center;">
@@ -84,16 +84,16 @@
                     </h:outputLink>
                 </f:facet>
                 <p>
-                    Title : #{catalogBean.selectedBook.title}
+                    Titre : #{catalogBean.selectedBook.title}
                     <br/>
-                    Author : #{catalogBean.selectedBook.author.lastName} #{catalogBean.selectedBook.author.firstName}
+                    Auteur : #{catalogBean.selectedBook.author.lastName} #{catalogBean.selectedBook.author.firstName}
                     <br/>
-                    Editor : #{catalogBean.selectedBook.editor}
+                    Editeur : #{catalogBean.selectedBook.editor}
                     <br/>
-                    Price : #{catalogBean.selectedBook.unitPrice}
+                    Prix : #{catalogBean.selectedBook.unitPrice}
                     <br/>
                     <h:form>
-                        <a4j:commandButton title="Add to cart" image="/images/cart_add.png" style="width: 25px; height: 25px;" action="#{cartBean.addToCart(catalogBean.selectedBook.isbn)}" render="headerNbArticles, headerPrixTotal" oncomplete="#{rich:component('popup')}.hide(); return false;">
+                        <a4j:commandButton title="Ajouter au panier" image="/images/cart_add.png" style="width: 25px; height: 25px;" action="#{cartBean.addToCart(catalogBean.selectedBook.isbn)}" render="headerNbArticles, headerPrixTotal" oncomplete="#{rich:component('popup')}.hide(); return false;">
                         </a4j:commandButton>
                     </h:form>
                 </p>

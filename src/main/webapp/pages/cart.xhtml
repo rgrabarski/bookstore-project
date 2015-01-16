@@ -10,7 +10,7 @@
 <body>
 	<ui:composition template="/templates/basicTemplate.xhtml">
 		<ui:define name="title">
-			My Cart.
+			Panier
 		</ui:define>
 
 		<ui:define name="body">
@@ -20,21 +20,21 @@
                     <h:outputText value="#{cartline.book.isbn}"/>
                 </rich:column>
                 <rich:column>
-                    <f:facet name="header">Title</f:facet>
+                    <f:facet name="header">Titre</f:facet>
                     #{cartline.book.title}
                 </rich:column>
                 <rich:column>
-                    <f:facet name="header">Author</f:facet>
+                    <f:facet name="header">Auteur</f:facet>
                     #{fn:substring(cartline.book.author.firstName,0,1)}. #{cartline.book.author.lastName}
                 </rich:column>
                 <rich:column style="text-align: center;">
-                    <f:facet name="header">Unit Price</f:facet>
+                    <f:facet name="header">Prix à l'unité</f:facet>
                     <h:outputText value="#{cartline.book.unitPrice}">
                     	<f:convertNumber type="currency" currencySymbol="€"></f:convertNumber>
                     </h:outputText>
                 </rich:column>
                 <rich:column>
-                    <f:facet name="header">Quantity</f:facet>
+                    <f:facet name="header">Quantité</f:facet>
                     <h:form>
                     	<rich:inputNumberSpinner style="vertical-align: middle; " value="#{cartline.quantity}" step="1">
 	                    	<f:attribute name="current" value="#{cartline}"></f:attribute>
@@ -44,7 +44,7 @@
                     </h:form>
                 </rich:column>
                 <rich:column>
-                    <f:facet name="header">Total price</f:facet>
+                    <f:facet name="header">Prix total</f:facet>
                     <h:outputText value="#{cartline.linePrice}">
                     	<f:convertNumber type="currency" currencySymbol="€"></f:convertNumber>
                     </h:outputText>
@@ -57,7 +57,7 @@
                     </h:form>
                 </rich:column>
             </rich:dataTable>
-            <h:outputText id="noArticle" value="There is no articles in your cart." rendered="#{empty cartBean.cart || cartBean.cart == null}" />
+            <h:outputText id="noArticle" value="Votre panier est vide." rendered="#{empty cartBean.cart || cartBean.cart == null}" />
 		</ui:define>
 
 
