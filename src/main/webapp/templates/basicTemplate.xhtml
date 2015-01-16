@@ -13,39 +13,39 @@
 <body>
 
 	<!-- Header -->
-	<div
-		style="width: 100%; height: 100px; background-color: #{richSkin.headerBackgroundColor}; font-size: 4em; color: #{richSkin.headTextColor};">
-<!-- 		<h:graphicImage url="http://www.univ-catholille.fr/img/logo.gif" -->
-<!-- 			height="100px" /> -->
-		<ui:insert name="title">
-			<h:outputText value="Default Title" />
-		</ui:insert>
-<!-- 		<h:link outcome="/pages/cart.jsf" value="My Cart"></h:link> -->
-<!--         <h:link outcome="#{catalogBean.display()}" value="Catalogue"></h:link> -->
-<!-- 		<div style="float: right"> -->
-<!-- 			<h:form> -->
-<!-- 				<h:selectOneMenu value="#{skinBean.skin}"> -->
-<!-- 					<f:selectItems value="#{skinBean.availableSkins}" var="skin" -->
-<!-- 						itemLabel="#{skin.label}" itemValue="#{skin}" /> -->
-<!-- 					<f:ajax  execute="@form" render="@all" /> -->
-<!-- 				</h:selectOneMenu> -->
-<!-- 			</h:form> -->
-<!-- 		</div> -->
+	<div style="width: 100%; height: 100px; background-color: #{richSkin.headerBackgroundColor}; color: #{richSkin.headTextColor};">
 		
-		<div style="display: inline-block; width: 250px; position: relative; right: -700px;">
-			<h:form>
-				<h:commandButton value="Panier" title="Accéder à votre panier" action="#{cartBean.displayCart()}" rendered="#{loginBean.logged}"></h:commandButton>
-			</h:form>
-			<h:outputText id="headerNbArticles" style="font-size: 12px; font-weight: bold; display:block; margin: 0px;" rendered="#{loginBean.logged}" value="Nombre d'articles dans le panier : #{cartBean.nbArticles}"></h:outputText>
-			<h:outputText style="font-size: 12px; font-weight: bold; display:inline;" rendered="#{loginBean.logged}" value="Prix total du panier : "></h:outputText>
-			<h:outputText id="headerPrixTotal" style="font-size: 12px; font-weight: bold; display:inline;" rendered="#{loginBean.logged}" value="#{cartBean.prixTotal}">
-				<f:convertNumber type="currency" currencySymbol="€" ></f:convertNumber>
-			</h:outputText>
+		<div style="width:300px; display: inline-block; vertical-align: middle; font-size: 4em;">
+			<ui:insert name="title">
+				<h:outputText value="Default Title" />
+			</ui:insert>
 		</div>
 		
-		<h:form>
-			<h:commandButton value="Déconnection" style="float: right;" rendered="#{loginBean.logged}" action="#{loginBean.logout()}"></h:commandButton>
-		</h:form>
+		<div style="width:900px; display: inline-block; vertical-align: middle;">
+			<div style="width: 880px ;display: inline-block; height:100x; ">
+				<h:form style="display: inline-block;">
+					<a href="./catalog.jsf" style="margin:0px 20px; font-weight: bold;" >Catalogue</a>
+					<a href="./../index.jsf"  style="margin:0px 20px; font-weight: bold;" >Accueil</a>
+					<h:commandButton value="Panier" title="Accéder à votre panier" action="#{cartBean.displayCart()}" rendered="#{loginBean.logged}"></h:commandButton>
+
+					<div style="width: 400px; display: inline-block; height: 100px;">
+						<p style="margin: 0px; vertical-align: middle; display: inline-block;">
+							<h:outputText id="headerNbArticles" style="font-size: 12px; font-weight: bold; margin: 0px;" rendered="#{loginBean.logged}" value="Nombre d'articles dans le panier : #{cartBean.nbArticles}"></h:outputText>
+							<br />
+							<br />
+							<h:outputText style="font-size: 12px; font-weight: bold;" rendered="#{loginBean.logged}" value="Prix total du panier : "></h:outputText>
+							<h:outputText id="headerPrixTotal" style="font-size: 12px; font-weight: bold;" rendered="#{loginBean.logged}" value="#{cartBean.prixTotal}">
+								<f:convertNumber type="currency" currencySymbol="€" ></f:convertNumber>
+							</h:outputText>
+						</p>
+					</div>
+					
+					<h:commandButton value="Déconnection" title="Se déconnecter" action="#{loginBean.logout()}" rendered="#{loginBean.logged}"></h:commandButton>
+					
+				</h:form>
+			</div>
+			
+		</div>
 	</div>
 
 	<!-- Content -->
